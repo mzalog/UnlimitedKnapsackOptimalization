@@ -1,6 +1,7 @@
 package knapsack.problem;
 
 import javax.swing.*;
+import javax.swing.border.TitledBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -10,6 +11,7 @@ public class KnapsackGUI {
     private JTextField numberOfItemsField;
     private JTextField seedField;
     private JTextField capacityField;
+    private JTextArea problemTextArea;
     private JTextArea resultTextArea;
     private JButton solveButton;
 
@@ -26,9 +28,10 @@ public class KnapsackGUI {
                     int upperBound = 10;
 
                     Problem problem = new Problem(numberOfItems, seed, lowerBound, upperBound);
+                    problemTextArea.setText(problem.toString());
                     Result result = problem.solve(capacity);
 
-                    resultTextArea.setText(problem.toString() + "\n" + result.toString());
+                    resultTextArea.setText(result.toString());
                 }
             }
         });
@@ -54,7 +57,7 @@ public class KnapsackGUI {
     public static void main(String[] args) {
         JFrame frame = new JFrame("Knapsack Problem Solver");
         frame.setContentPane(new KnapsackGUI().panel1);
-        frame.setPreferredSize(new Dimension(400, 600));
+        frame.setPreferredSize(new Dimension(800, 500));
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
         frame.setVisible(true);
@@ -65,7 +68,11 @@ public class KnapsackGUI {
         numberOfItemsField = new JTextField(10);
         seedField = new JTextField(10);
         capacityField = new JTextField(10);
-        resultTextArea = new JTextArea(10, 50);
+        problemTextArea = new JTextArea(10, 20);
+        problemTextArea.setEditable(false);
+        problemTextArea.setLineWrap(true);
+        problemTextArea.setWrapStyleWord(true);
+        resultTextArea = new JTextArea(10, 10);
         resultTextArea.setEditable(false);
         resultTextArea.setLineWrap(true);
         resultTextArea.setWrapStyleWord(true);
@@ -82,6 +89,8 @@ public class KnapsackGUI {
                 seedField.getBorder(), BorderFactory.createEmptyBorder(5, 5, 5, 5)));
         capacityField.setBorder(BorderFactory.createCompoundBorder(
                 capacityField.getBorder(), BorderFactory.createEmptyBorder(5, 5, 5, 5)));
+        problemTextArea.setBorder(BorderFactory.createCompoundBorder(
+                problemTextArea.getBorder(), BorderFactory.createEmptyBorder(10, 10, 10, 10)));
         resultTextArea.setBorder(BorderFactory.createCompoundBorder(
                 resultTextArea.getBorder(), BorderFactory.createEmptyBorder(10, 10, 10, 10)));
     }
@@ -97,142 +106,76 @@ public class KnapsackGUI {
         createUIComponents();
         panel1 = new JPanel();
         panel1.setLayout(new GridBagLayout());
-        panel1.setAlignmentX(0.0f);
-        panel1.setAlignmentY(0.0f);
-        panel1.setDoubleBuffered(true);
-        panel1.setEnabled(true);
-        panel1.setFocusCycleRoot(false);
-        panel1.setFocusTraversalPolicyProvider(false);
-        panel1.setMaximumSize(new Dimension(800, 1200));
-        panel1.setMinimumSize(new Dimension(200, 300));
-        panel1.setOpaque(true);
-        panel1.setPreferredSize(new Dimension(200, 300));
-        panel1.putClientProperty("html.disable", Boolean.FALSE);
-        seedField = new JTextField();
-        seedField.setAlignmentX(0.0f);
-        seedField.setAlignmentY(0.0f);
-        seedField.setMargin(new Insets(2, 9, 2, 6));
-        seedField.setMaximumSize(new Dimension(120, 18));
-        seedField.setMinimumSize(new Dimension(120, 18));
-        seedField.setPreferredSize(new Dimension(120, 18));
-        GridBagConstraints gbc;
-        gbc = new GridBagConstraints();
+        panel1.setBackground(new Color(245, 245, 245));
+
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.insets = new Insets(10, 10, 10, 10);
+        gbc.anchor = GridBagConstraints.WEST;
+
+        JPanel inputPanel = new JPanel(new GridBagLayout());
+        inputPanel.setBorder(BorderFactory.createTitledBorder(
+                BorderFactory.createEtchedBorder(), "Input Parameters", TitledBorder.LEFT, TitledBorder.TOP));
+        inputPanel.setBackground(new Color(255, 255, 255));
+
+        JLabel label1 = new JLabel("Number of Items:");
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        inputPanel.add(label1, gbc);
+
+        gbc.gridx = 1;
+        gbc.gridy = 0;
+        inputPanel.add(numberOfItemsField, gbc);
+
+        JLabel label2 = new JLabel("Seed:");
         gbc.gridx = 0;
         gbc.gridy = 1;
-        gbc.weightx = 0.1;
-        gbc.ipadx = 15;
-        gbc.ipady = 10;
-        gbc.insets = new Insets(10, 10, 10, 2);
-        panel1.add(seedField, gbc);
-        capacityField = new JTextField();
-        capacityField.setAlignmentX(0.0f);
-        capacityField.setAlignmentY(0.0f);
-        capacityField.setMargin(new Insets(2, 9, 2, 6));
-        capacityField.setMaximumSize(new Dimension(120, 18));
-        capacityField.setMinimumSize(new Dimension(120, 18));
-        capacityField.setPreferredSize(new Dimension(120, 18));
-        gbc = new GridBagConstraints();
+        inputPanel.add(label2, gbc);
+
+        gbc.gridx = 1;
+        gbc.gridy = 1;
+        inputPanel.add(seedField, gbc);
+
+        JLabel label3 = new JLabel("Knapsack Capacity:");
         gbc.gridx = 0;
         gbc.gridy = 2;
-        gbc.weightx = 0.1;
-        gbc.ipadx = 15;
-        gbc.ipady = 10;
-        gbc.insets = new Insets(10, 10, 10, 2);
-        panel1.add(capacityField, gbc);
-        final JScrollPane scrollPane1 = new JScrollPane();
-        scrollPane1.setAlignmentX(1.0f);
-        scrollPane1.setAlignmentY(1.0f);
-        gbc = new GridBagConstraints();
+        inputPanel.add(label3, gbc);
+
+        gbc.gridx = 1;
+        gbc.gridy = 2;
+        inputPanel.add(capacityField, gbc);
+
+        gbc.gridx = 1;
+        gbc.gridy = 3;
+        inputPanel.add(solveButton, gbc);
+
         gbc.gridx = 0;
-        gbc.gridy = 5;
-        gbc.gridwidth = 3;
+        gbc.gridy = 0;
+        gbc.gridwidth = 2;
+        panel1.add(inputPanel, gbc);
+
+        JScrollPane problemScrollPane = new JScrollPane(problemTextArea);
+        problemScrollPane.setBorder(BorderFactory.createTitledBorder(
+                BorderFactory.createEtchedBorder(), "Problem Instance", TitledBorder.LEFT, TitledBorder.TOP));
+
+        gbc.gridx = 0;
+        gbc.gridy = 1;
+        gbc.gridwidth = 2;
+        gbc.fill = GridBagConstraints.BOTH;
         gbc.weightx = 1.0;
         gbc.weighty = 1.0;
-        gbc.fill = GridBagConstraints.BOTH;
-        gbc.ipadx = 50;
-        gbc.ipady = 50;
-        gbc.insets = new Insets(10, 10, 10, 10);
-        panel1.add(scrollPane1, gbc);
-        resultTextArea.setAlignmentX(0.0f);
-        resultTextArea.setAlignmentY(0.0f);
-        resultTextArea.setAutoscrolls(true);
-        resultTextArea.setColumns(0);
-        resultTextArea.setDragEnabled(false);
-        resultTextArea.setEditable(false);
-        resultTextArea.setMargin(new Insets(0, 0, 0, 0));
-        resultTextArea.setText("");
-        scrollPane1.setViewportView(resultTextArea);
-        solveButton = new JButton();
-        solveButton.setActionCommand("Button");
-        solveButton.setAlignmentX(1.0f);
-        solveButton.setAlignmentY(1.0f);
-        solveButton.setText("Solve");
-        gbc = new GridBagConstraints();
-        gbc.gridx = 2;
-        gbc.gridy = 3;
-        gbc.weightx = 0.1;
-        gbc.insets = new Insets(10, 10, 10, 10);
-        panel1.add(solveButton, gbc);
-        final JPanel spacer1 = new JPanel();
-        gbc = new GridBagConstraints();
-        gbc.gridx = 1;
-        gbc.gridy = 4;
-        gbc.gridwidth = 2;
-        gbc.fill = GridBagConstraints.VERTICAL;
-        gbc.ipadx = 2;
-        gbc.ipady = 2;
-        panel1.add(spacer1, gbc);
-        numberOfItemsField = new JTextField();
-        numberOfItemsField.setAlignmentX(0.0f);
-        numberOfItemsField.setAlignmentY(0.0f);
-        numberOfItemsField.setMargin(new Insets(2, 9, 2, 6));
-        numberOfItemsField.setMaximumSize(new Dimension(120, 18));
-        numberOfItemsField.setMinimumSize(new Dimension(120, 18));
-        numberOfItemsField.setPreferredSize(new Dimension(120, 18));
-        gbc = new GridBagConstraints();
+        panel1.add(problemScrollPane, gbc);
+
+        JScrollPane resultScrollPane = new JScrollPane(resultTextArea);
+        resultScrollPane.setBorder(BorderFactory.createTitledBorder(
+                BorderFactory.createEtchedBorder(), "Result", TitledBorder.LEFT, TitledBorder.TOP));
+
         gbc.gridx = 0;
-        gbc.gridy = 0;
-        gbc.weightx = 0.1;
-        gbc.ipadx = 15;
-        gbc.ipady = 10;
-        gbc.insets = new Insets(10, 10, 10, 2);
-        panel1.add(numberOfItemsField, gbc);
-        final JLabel label1 = new JLabel();
-        label1.setMaximumSize(new Dimension(120, 18));
-        label1.setMinimumSize(new Dimension(120, 18));
-        label1.setPreferredSize(new Dimension(120, 18));
-        label1.setText("Number of Items");
-        gbc = new GridBagConstraints();
-        gbc.gridx = 1;
-        gbc.gridy = 0;
-        gbc.anchor = GridBagConstraints.WEST;
-        gbc.insets = new Insets(10, 2, 10, 10);
-        panel1.add(label1, gbc);
-        final JLabel label2 = new JLabel();
-        label2.setMaximumSize(new Dimension(120, 18));
-        label2.setMinimumSize(new Dimension(120, 18));
-        label2.setPreferredSize(new Dimension(120, 18));
-        label2.setText("Seed");
-        gbc = new GridBagConstraints();
-        gbc.gridx = 1;
-        gbc.gridy = 1;
-        gbc.anchor = GridBagConstraints.WEST;
-        gbc.insets = new Insets(10, 2, 10, 10);
-        panel1.add(label2, gbc);
-        final JLabel label3 = new JLabel();
-        label3.setMaximumSize(new Dimension(120, 18));
-        label3.setMinimumSize(new Dimension(120, 18));
-        label3.setPreferredSize(new Dimension(120, 18));
-        label3.setText("Knapsack Capacity");
-        gbc = new GridBagConstraints();
-        gbc.gridx = 1;
         gbc.gridy = 2;
-        gbc.anchor = GridBagConstraints.WEST;
-        gbc.insets = new Insets(10, 2, 10, 10);
-        panel1.add(label3, gbc);
-        label1.setLabelFor(numberOfItemsField);
-        label2.setLabelFor(seedField);
-        label3.setLabelFor(capacityField);
+        gbc.gridwidth = 2;
+        gbc.fill = GridBagConstraints.BOTH;
+        gbc.weightx = 1.0;
+        gbc.weighty = 1.0;
+        panel1.add(resultScrollPane, gbc);
     }
 
     /**
@@ -241,5 +184,4 @@ public class KnapsackGUI {
     public JComponent $$$getRootComponent$$$() {
         return panel1;
     }
-
 }

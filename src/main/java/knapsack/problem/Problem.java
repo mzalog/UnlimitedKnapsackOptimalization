@@ -25,7 +25,7 @@ public class Problem {
         for (int i = 0; i < numberOfItems; i++) {
             int value = random.nextInt(upperBound - lowerBound + 1) + lowerBound;
             int weight = random.nextInt(upperBound - lowerBound + 1) + lowerBound;
-            items.add(new Item(i + 1, value, weight));  // Numerowanie przedmiotów od 1
+            items.add(new Item(i + 1, value, weight));
         }
     }
 
@@ -41,7 +41,7 @@ public class Problem {
             if (count > 0) {
                 currentWeight += count * item.weight;
                 totalValue += count * item.value;
-                itemNumbers.add(item.id);  // Używamy id przedmiotu
+                itemNumbers.add(item.id);
                 itemCounts.add(count);
                 for (int j = 0; j < count; j++) {
                     itemsInKnapsack.add(item);

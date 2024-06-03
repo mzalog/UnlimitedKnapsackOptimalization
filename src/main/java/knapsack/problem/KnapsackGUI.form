@@ -2,7 +2,7 @@
 <form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="knapsack.problem.KnapsackGUI">
   <grid id="27dc6" binding="panel1" layout-manager="GridBagLayout">
     <constraints>
-      <xy x="58" y="92" width="306" height="342"/>
+      <xy x="58" y="92" width="510" height="337"/>
     </constraints>
     <properties>
       <alignmentX value="0.0"/>
@@ -81,26 +81,6 @@
           </component>
         </children>
       </scrollpane>
-      <component id="1488" class="javax.swing.JButton" binding="solveButton">
-        <constraints>
-          <grid row="3" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false">
-            <minimum-size width="25" height="25"/>
-          </grid>
-          <gridbag top="10" left="10" bottom="10" right="10" weightx="0.1" weighty="0.0"/>
-        </constraints>
-        <properties>
-          <actionCommand value="Button"/>
-          <alignmentX value="1.0"/>
-          <alignmentY value="1.0"/>
-          <text value="Solve"/>
-        </properties>
-      </component>
-      <vspacer id="87a8">
-        <constraints>
-          <grid row="4" column="1" row-span="1" col-span="2" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
-          <gridbag weightx="0.0" weighty="0.0" ipadx="2" ipady="2"/>
-        </constraints>
-      </vspacer>
       <component id="a910a" class="javax.swing.JTextField" binding="numberOfItemsField">
         <constraints>
           <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="1" use-parent-layout="false">
@@ -154,6 +134,75 @@
           <minimumSize width="120" height="18"/>
           <preferredSize width="120" height="18"/>
           <text value="Knapsack Capacity"/>
+        </properties>
+      </component>
+      <scrollpane id="a0160">
+        <constraints>
+          <grid row="2" column="3" row-span="4" col-span="2" vsize-policy="7" hsize-policy="3" anchor="0" fill="3" indent="2" use-parent-layout="false"/>
+          <gridbag top="10" left="10" bottom="10" right="10" weightx="1.0" weighty="1.0" ipadx="50" ipady="50"/>
+        </constraints>
+        <properties>
+          <alignmentX value="1.0"/>
+          <alignmentY value="1.0"/>
+        </properties>
+        <border type="none"/>
+        <children>
+          <component id="aed88" class="javax.swing.JTextArea" binding="problemTextArea" custom-create="true">
+            <constraints/>
+            <properties>
+              <alignmentX value="0.0"/>
+              <alignmentY value="0.0"/>
+              <autoscrolls value="true"/>
+              <columns value="0"/>
+              <dragEnabled value="false"/>
+              <editable value="false"/>
+              <margin top="0" left="0" bottom="0" right="0"/>
+              <text value=""/>
+            </properties>
+          </component>
+        </children>
+      </scrollpane>
+      <component id="1488" class="javax.swing.JButton" binding="solveButton">
+        <constraints>
+          <grid row="3" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false">
+            <minimum-size width="25" height="25"/>
+          </grid>
+          <gridbag top="10" left="10" bottom="10" right="10" weightx="0.1" weighty="0.0"/>
+        </constraints>
+        <properties>
+          <actionCommand value="Button"/>
+          <alignmentX value="1.0"/>
+          <alignmentY value="1.0"/>
+          <text value="Solve"/>
+        </properties>
+      </component>
+      <component id="4389a" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+          <gridbag top="10" left="2" bottom="10" right="10" weightx="0.0" weighty="0.0"/>
+        </constraints>
+        <properties>
+          <font name="Source Code Pro" size="18" style="2"/>
+          <labelFor value="b903f"/>
+          <maximumSize width="120" height="18"/>
+          <minimumSize width="120" height="18"/>
+          <preferredSize width="120" height="18"/>
+          <text value="Results"/>
+        </properties>
+      </component>
+      <component id="21c24" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="1" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+          <gridbag top="10" left="2" bottom="10" right="10" weightx="0.0" weighty="0.0"/>
+        </constraints>
+        <properties>
+          <font name="Source Code Pro" size="18" style="2"/>
+          <labelFor value="aed88"/>
+          <maximumSize width="120" height="18"/>
+          <minimumSize width="120" height="18"/>
+          <preferredSize width="120" height="18"/>
+          <text value="Instance"/>
+          <verifyInputWhenFocusTarget value="true"/>
         </properties>
       </component>
     </children>
