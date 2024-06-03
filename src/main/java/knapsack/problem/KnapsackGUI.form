@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="knapsack.problem.KnapsackGUI">
+  <grid id="27dc6" binding="panel1" layout-manager="GridBagLayout">
+    <constraints>
+      <xy x="58" y="92" width="306" height="342"/>
+    </constraints>
+    <properties>
+      <alignmentX value="0.0"/>
+      <alignmentY value="0.0"/>
+      <doubleBuffered value="true"/>
+      <enabled value="true"/>
+      <focusCycleRoot value="false"/>
+      <focusTraversalPolicyProvider value="false"/>
+      <maximumSize width="800" height="1200"/>
+      <minimumSize width="200" height="300"/>
+      <opaque value="true"/>
+      <preferredSize width="200" height="300"/>
+    </properties>
+    <clientProperties>
+      <html.disable class="java.lang.Boolean" value="false"/>
+    </clientProperties>
+    <border type="none">
+      <title-color color="-2104859"/>
+    </border>
+    <children>
+      <component id="37c25" class="javax.swing.JTextField" binding="seedField">
+        <constraints>
+          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="1" use-parent-layout="false">
+            <preferred-size width="50" height="35"/>
+          </grid>
+          <gridbag top="10" left="10" bottom="10" right="2" weightx="0.1" weighty="0.0" ipadx="15" ipady="10"/>
+        </constraints>
+        <properties>
+          <alignmentX value="0.0"/>
+          <alignmentY value="0.0"/>
+          <margin top="2" left="9" bottom="2" right="6"/>
+          <maximumSize width="120" height="18"/>
+          <minimumSize width="120" height="18"/>
+          <preferredSize width="120" height="18"/>
+        </properties>
+      </component>
+      <component id="19127" class="javax.swing.JTextField" binding="capacityField">
+        <constraints>
+          <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="1" use-parent-layout="false">
+            <preferred-size width="50" height="34"/>
+          </grid>
+          <gridbag top="10" left="10" bottom="10" right="2" weightx="0.1" weighty="0.0" ipadx="15" ipady="10"/>
+        </constraints>
+        <properties>
+          <alignmentX value="0.0"/>
+          <alignmentY value="0.0"/>
+          <margin top="2" left="9" bottom="2" right="6"/>
+          <maximumSize width="120" height="18"/>
+          <minimumSize width="120" height="18"/>
+          <preferredSize width="120" height="18"/>
+        </properties>
+      </component>
+      <scrollpane id="8c85b">
+        <constraints>
+          <grid row="5" column="0" row-span="1" col-span="3" vsize-policy="7" hsize-policy="3" anchor="0" fill="3" indent="2" use-parent-layout="false"/>
+          <gridbag top="10" left="10" bottom="10" right="10" weightx="1.0" weighty="1.0" ipadx="50" ipady="50"/>
+        </constraints>
+        <properties>
+          <alignmentX value="1.0"/>
+          <alignmentY value="1.0"/>
+        </properties>
+        <border type="none"/>
+        <children>
+          <component id="b903f" class="javax.swing.JTextArea" binding="resultTextArea" custom-create="true">
+            <constraints/>
+            <properties>
+              <alignmentX value="0.0"/>
+              <alignmentY value="0.0"/>
+              <autoscrolls value="true"/>
+              <columns value="0"/>
+              <dragEnabled value="false"/>
+              <editable value="false"/>
+              <margin top="0" left="0" bottom="0" right="0"/>
+              <text value=""/>
+            </properties>
+          </component>
+        </children>
+      </scrollpane>
+      <component id="1488" class="javax.swing.JButton" binding="solveButton">
+        <constraints>
+          <grid row="3" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false">
+            <minimum-size width="25" height="25"/>
+          </grid>
+          <gridbag top="10" left="10" bottom="10" right="10" weightx="0.1" weighty="0.0"/>
+        </constraints>
+        <properties>
+          <actionCommand value="Button"/>
+          <alignmentX value="1.0"/>
+          <alignmentY value="1.0"/>
+          <text value="Solve"/>
+        </properties>
+      </component>
+      <vspacer id="87a8">
+        <constraints>
+          <grid row="4" column="1" row-span="1" col-span="2" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+          <gridbag weightx="0.0" weighty="0.0" ipadx="2" ipady="2"/>
+        </constraints>
+      </vspacer>
+      <component id="a910a" class="javax.swing.JTextField" binding="numberOfItemsField">
+        <constraints>
+          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="1" use-parent-layout="false">
+            <preferred-size width="50" height="35"/>
+          </grid>
+          <gridbag top="10" left="10" bottom="10" right="2" weightx="0.1" weighty="0.0" ipadx="15" ipady="10"/>
+        </constraints>
+        <properties>
+          <alignmentX value="0.0"/>
+          <alignmentY value="0.0"/>
+          <margin top="2" left="9" bottom="2" right="6"/>
+          <maximumSize width="120" height="18"/>
+          <minimumSize width="120" height="18"/>
+          <preferredSize width="120" height="18"/>
+        </properties>
+      </component>
+      <component id="4da14" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+          <gridbag top="10" left="2" bottom="10" right="10" weightx="0.0" weighty="0.0"/>
+        </constraints>
+        <properties>
+          <labelFor value="a910a"/>
+          <maximumSize width="120" height="18"/>
+          <minimumSize width="120" height="18"/>
+          <preferredSize width="120" height="18"/>
+          <text value="Number of Items"/>
+        </properties>
+      </component>
+      <component id="44dac" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+          <gridbag top="10" left="2" bottom="10" right="10" weightx="0.0" weighty="0.0"/>
+        </constraints>
+        <properties>
+          <labelFor value="37c25"/>
+          <maximumSize width="120" height="18"/>
+          <minimumSize width="120" height="18"/>
+          <preferredSize width="120" height="18"/>
+          <text value="Seed"/>
+        </properties>
+      </component>
+      <component id="4686f" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+          <gridbag top="10" left="2" bottom="10" right="10" weightx="0.0" weighty="0.0"/>
+        </constraints>
+        <properties>
+          <labelFor value="19127"/>
+          <maximumSize width="120" height="18"/>
+          <minimumSize width="120" height="18"/>
+          <preferredSize width="120" height="18"/>
+          <text value="Knapsack Capacity"/>
+        </properties>
+      </component>
+    </children>
+  </grid>
+</form>
